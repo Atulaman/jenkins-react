@@ -8,7 +8,37 @@ pipeline {
         }
         stage('second'){
             steps {
-                echo "hello 2nd steps"
+                input "do you want to proceed?"
+            }
+        }
+        stage('three'){
+            when {
+                not {
+                    branch "master"
+                }
+            }
+            steps {
+                echo "kaise ho?"
+            }
+        }
+        stage('four'){
+            parallel {
+                stage('unit test') {
+                    steps{
+                        echo "running unit testing...."
+                    }
+                }
+                stage('integration testing') {
+                    agent{
+                        docker{
+                            reuseNode false
+                            image "ubuntu"
+                        }
+                    }
+                    steps{
+                        echo "running integration testing"
+                    }
+                }
             }
         }
     }
