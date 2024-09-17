@@ -33,13 +33,20 @@ pipeline {
                         docker{
                             reuseNode false
                             image "ubuntu"
-                            docker-compose up -d
                         }
                     }
                     steps{
                         echo "running integration testing"
                     }
                 }
+            }
+        }
+        stage('five'){
+            steps{
+                sh '''
+                    #!bin/bash
+                    docker-compose up
+                '''
             }
         }
     }
