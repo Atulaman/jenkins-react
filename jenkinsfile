@@ -33,6 +33,9 @@ pipeline {
                         docker{
                             reuseNode false
                             image "ubuntu"
+                            script {
+                                docker-compose up -d
+                            }
                         }
                     }
                     steps{
