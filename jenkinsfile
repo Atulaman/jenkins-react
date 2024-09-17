@@ -48,6 +48,7 @@ pipeline {
                     docker-compose down -v
                     docker-compose up -d
                     docker build -t atulaman/jenkins-react:latest .
+                    docker login -u atulaman -p Mikku@123
                     docker push atulaman/jenkins-react:latest
                 '''
             }
