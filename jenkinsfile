@@ -44,19 +44,22 @@ pipeline {
         stage('five'){
             steps{
                 sh '''
-                    #!bin/bash
+                    #!/bin/bash
                     docker-compose down -v
                     docker-compose up -d
                     docker build -t atulaman/jenkins-react:latest .
                 '''
             }
         }
-         stage('six'){
+        stage('six'){
             steps{
-                sh '''
-                    docker login -u atulaman -p ${params.DOCKER_PASS}
-                    docker push atulaman/jenkins-react:latest
-                '''
+                withCredentials([string(credentialsId: 'DOCKER_PASS', variable: 'DOCKER_PASS')]) {
+                    sh '''
+                        #!/bin/bash
+                        echo $DOCKER_PASS | docker login -u atulaman --password-stdin
+                        docker push atulaman/jenkins-react:latest
+                    '''
+                }
             }
         }
     }
