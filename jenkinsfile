@@ -47,7 +47,7 @@ pipeline {
                     #!bin/bash
                     docker-compose down -v
                     docker-compose up -d
-                    docker build -t atulaman/jenkins-react:latest
+                    docker build -t atulaman/jenkins-react:latest .
                     docker push atulaman/jenkins-react:latest
                 '''
             }
