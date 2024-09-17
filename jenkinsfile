@@ -37,6 +37,7 @@ pipeline {
                     }
                     steps{
                         echo "running integration testing"
+                        xwdbxhjw dhvw
                     }
                 }
             }
@@ -47,6 +48,7 @@ pipeline {
                     #!bin/bash
                     docker-compose down -v
                     docker-compose up -d
+                    hvxzjvhjxwvhjxvwjhxvwjhxvw
                     docker build -t atulaman/jenkins-react:latest .
                 '''
             }
