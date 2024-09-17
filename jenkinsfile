@@ -48,6 +48,12 @@ pipeline {
                     docker-compose down -v
                     docker-compose up -d
                     docker build -t atulaman/jenkins-react:latest .
+                '''
+            }
+        }
+         stage('six'){
+            steps{
+                sh '''
                     docker login -u atulaman -p ${params.DOCKER_PASS}
                     docker push atulaman/jenkins-react:latest
                 '''
