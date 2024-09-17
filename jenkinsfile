@@ -32,9 +32,10 @@ pipeline {
                     agent{
                         docker{
                             reuseNode false
-                            image "ubuntu"
                             script {
+                                sh '''
                                 docker-compose up -d
+                                '''
                             }
                         }
                     }
